@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/deeplink.iml" filepath="$PROJECT_DIR$/.idea/modules/deeplink.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/deeplink_main.iml" filepath="$PROJECT_DIR$/.idea/modules/deeplink_main.iml" group="deeplink" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/deeplink_test.iml" filepath="$PROJECT_DIR$/.idea/modules/deeplink_test.iml" group="deeplink" />
+    </modules>
+  </component>
+</project>
