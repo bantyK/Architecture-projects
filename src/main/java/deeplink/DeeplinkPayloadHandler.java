@@ -6,7 +6,7 @@ import deeplink.moengage.MoEnagegeDeeplink;
 import main.PayloadListener;
 
 public class DeeplinkPayloadHandler implements PayloadHandler {
-    private final PayloadListener listener;
+    PayloadListener listener;
     private AppsflyerDeeplink appsflyer;
     private MoEnagegeDeeplink moEnagegeDeeplink;
     private FacebookDeeplink facebookDeeplink;
