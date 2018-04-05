@@ -12,16 +12,15 @@ public class AppsflyerDeeplink implements DeeplinkDataSource {
 
     public AppsflyerDeeplink(PayloadHandler payloadHandler) {
         this.handler = payloadHandler;
-
-        callbackReceivedFromAppsflyer();
     }
+
 
     @Override
     public void onDataReceived(String payload) {
         handler.onPayloadReceived(payload);
     }
 
-    private void callbackReceivedFromAppsflyer() {
+    public void callbackReceivedFromAppsflyer() {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {

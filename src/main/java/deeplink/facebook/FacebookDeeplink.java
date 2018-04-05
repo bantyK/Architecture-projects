@@ -12,11 +12,9 @@ public class FacebookDeeplink implements DeeplinkDataSource {
 
     public FacebookDeeplink(PayloadHandler payloadListener) {
         this.handler = payloadListener;
-
-        callbackReceivedFromFacebook();
     }
 
-    private void callbackReceivedFromFacebook() {
+    public void callbackReceivedFromFacebook() {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {

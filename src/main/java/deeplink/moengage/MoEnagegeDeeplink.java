@@ -12,8 +12,6 @@ public class MoEnagegeDeeplink implements DeeplinkDataSource {
 
     public MoEnagegeDeeplink(PayloadHandler payloadListener) {
         this.handler = payloadListener;
-
-        callbackReceivedFromMoengage();
     }
 
     @Override
@@ -21,7 +19,7 @@ public class MoEnagegeDeeplink implements DeeplinkDataSource {
         handler.onPayloadReceived(payload);
     }
 
-    private void callbackReceivedFromMoengage() {
+    public void callbackReceivedFromMoengage() {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {

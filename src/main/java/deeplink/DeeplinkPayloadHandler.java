@@ -24,14 +24,17 @@ public class DeeplinkPayloadHandler implements PayloadHandler {
 
     public void initAppsflyer() {
         appsflyer = new AppsflyerDeeplink(this);
+        appsflyer.callbackReceivedFromAppsflyer();
     }
 
     public void initMoEnagee() {
         moEnagegeDeeplink = new MoEnagegeDeeplink(this);
+        moEnagegeDeeplink.callbackReceivedFromMoengage();
     }
 
     public void initFacebook() {
         facebookDeeplink = new FacebookDeeplink(this);
+        facebookDeeplink.callbackReceivedFromFacebook();
     }
 
     @Override
