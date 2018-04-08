@@ -5,15 +5,15 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.example.vuclip.repositorypattern.dagger.DaggerAppComponent;
+import com.example.vuclip.repositorypattern.dagger.MainActivityModule;
 import com.example.vuclip.repositorypattern.data.PostDataRepository;
 import com.example.vuclip.repositorypattern.data.PostRepository;
-import com.example.vuclip.repositorypattern.data.local.LocalPostRepository;
-import com.example.vuclip.repositorypattern.data.local.PostDatabase;
-import com.example.vuclip.repositorypattern.data.remote.RemotePostRepository;
 import com.example.vuclip.repositorypattern.model.Post;
-import com.example.vuclip.repositorypattern.utils.AppExecutors;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 /**
  * Created by Banty on 08/04/18.
@@ -22,18 +22,19 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
+    @Inject
+    PostRepository mPostRepository;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        PostDatabase database = PostDatabase.getInstance(this);
+        DaggerAppComponent.builder()
+                .mainActivityModule(new MainActivityModule(this))
+                .build().inject(this);
 
-        PostRepository repository = PostRepository.getInstance(
-                RemotePostRepository.getInstance(),
-                LocalPostRepository.getInstance(database.postDao(), new AppExecutors()));
-
-        repository.getPosts(new PostDataRepository.LoadPostsCallback() {
+        mPostRepository.getPosts(new PostDataRepository.LoadPostsCallback() {
             @Override
             public void onPostLoaded(List<Post> posts) {
                 Log.d(TAG, "onPostLoaded: " + posts.size());
