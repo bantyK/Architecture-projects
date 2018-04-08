@@ -1,6 +1,6 @@
 package com.example.vuclip.repositorypattern.dagger;
 
-import com.example.vuclip.repositorypattern.MainActivity;
+import com.example.vuclip.repositorypattern.post.PostActivity;
 
 import dagger.Component;
 
@@ -9,5 +9,5 @@ import dagger.Component;
  */
 @Component(modules = {MainActivityModule.class})
 public interface AppComponent {
-    void inject(MainActivity target);
+    void inject(PostActivity target);
 }

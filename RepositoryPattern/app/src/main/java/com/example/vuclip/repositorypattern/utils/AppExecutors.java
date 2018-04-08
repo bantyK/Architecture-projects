@@ -56,4 +56,18 @@ public class AppExecutors {
             mainThreadHandler.post(command);
         }
     }
+
+    private static class DiskIOThreadExecutor implements Executor {
+
+        private final Executor diskIO;
+
+        public DiskIOThreadExecutor() {
+            diskIO = Executors.newSingleThreadExecutor();
+        }
+
+        @Override
+        public void execute(@NonNull Runnable command) {
+            diskIO.execute(command);
+        }
+    }
 }
