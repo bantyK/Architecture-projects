@@ -7,6 +7,7 @@ import com.example.vuclip.repositorypattern.data.local.LocalPostRepository;
 import com.example.vuclip.repositorypattern.data.local.PostDao;
 import com.example.vuclip.repositorypattern.data.local.PostDatabase;
 import com.example.vuclip.repositorypattern.data.remote.RemotePostRepository;
+import com.example.vuclip.repositorypattern.post.PostRecyclerAdapter;
 import com.example.vuclip.repositorypattern.utils.AppExecutors;
 
 import javax.inject.Singleton;
@@ -19,11 +20,11 @@ import dagger.Provides;
  */
 @Singleton
 @Module
-public class MainActivityModule {
+public class PostModule {
 
     final Context mContext;
 
-    public MainActivityModule(Context context) {
+    public PostModule(Context context) {
         mContext = context;
     }
 
@@ -53,6 +54,5 @@ public class MainActivityModule {
     public AppExecutors provideAppExecutor() {
         return new AppExecutors();
     }
-
 
 }

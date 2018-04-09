@@ -8,7 +8,7 @@ import com.example.vuclip.repositorypattern.model.Post;
 
 import java.util.List;
 
-import javax.inject.Inject;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Created by Banty on 08/04/18.
@@ -17,8 +17,16 @@ public class PostPresenter implements PostContract.Presenter {
 
     private static final String TAG = "PostPresenter";
 
-    @Inject
-    PostRepository mPostRepository;
+    private final PostRepository mPostRepository;
+
+    private final PostContract.View mPostView;
+
+    public PostPresenter(PostRepository postRepository, PostContract.View postFragment) {
+        mPostRepository = checkNotNull(postRepository, "postRepository cannot be null");
+        mPostView = checkNotNull(postFragment, "postFragment cannot be null");
+
+        mPostView.setPresenter(this);
+    }
 
     @Override
     public void loadPosts() {
@@ -26,6 +34,7 @@ public class PostPresenter implements PostContract.Presenter {
             @Override
             public void onPostLoaded(List<Post> posts) {
                 Log.i(TAG, "onPostLoaded: " + posts.size());
+                mPostView.showPosts(posts);
             }
 
             @Override

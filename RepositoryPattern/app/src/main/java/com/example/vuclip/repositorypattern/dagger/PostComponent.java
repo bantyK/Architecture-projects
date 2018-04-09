@@ -7,7 +7,9 @@ import dagger.Component;
 /**
  * Created by Banty on 08/04/18.
  */
-@Component(modules = {MainActivityModule.class})
-public interface AppComponent {
+@Component(modules = {PostModule.class})
+public interface PostComponent {
+
     void inject(PostActivity target);
+
 }
