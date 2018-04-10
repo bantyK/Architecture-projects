@@ -13,6 +13,8 @@ public interface PostContract {
 
     interface Presenter extends BasePresenter {
         void loadPosts();
+
+        void showAddTask();
     }
 
 
