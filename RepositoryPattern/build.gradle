@@ -30,4 +30,5 @@ ext {
     supportLibraryVersion = '27.1.0'
     guavaVersion = '18.0'
     roomVersion = '1.0.0'
+    archVersion = '1.1.1'
 }

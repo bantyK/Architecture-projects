@@ -45,6 +45,11 @@ public class PostPresenter implements PostContract.Presenter {
     }
 
     @Override
+    public void showAddTask() {
+
+    }
+
+    @Override
     public void start() {
         loadPosts();
     }

@@ -1,6 +1,8 @@
 package com.example.vuclip.repositorypattern.dagger;
 
 import com.example.vuclip.repositorypattern.post.PostActivity;
+import com.example.vuclip.repositorypattern.post.PostListViewModel;
+import com.example.vuclip.repositorypattern.post.PostMvvmFragment;
 
 import dagger.Component;
 
@@ -11,5 +13,7 @@ import dagger.Component;
 public interface PostComponent {
 
     void inject(PostActivity target);
+
+    void inject(PostMvvmFragment target);
 
 }
