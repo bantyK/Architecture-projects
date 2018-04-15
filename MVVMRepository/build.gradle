@@ -33,4 +33,5 @@ ext {
     roomVersion = "1.0.0"
     retrofitVersion = '2.4.0'
     rxjava = '2.0.1'
+    daggerVersion = '2.13'
 }

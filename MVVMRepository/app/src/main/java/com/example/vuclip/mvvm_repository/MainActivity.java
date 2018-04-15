@@ -17,24 +17,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Initialiser repositoryInitialiser = new Initialiser();
-        PostRepository postRepository =
-                PostRepository.getInstance(
-                        repositoryInitialiser.getLocalPostRepository(this),
-                        repositoryInitialiser.getRemotePostRepository());
-
-        postRepository.getPost("2", new PostDataSource.GetPostCallback() {
-            @Override
-            public void onPostLoaded(Post post) {
-                Log.d(TAG, "onPostLoaded: title : " + post.getTitle());
-                Log.d(TAG, "onPostLoaded: body : " + post.getBody());
-            }
-
-            @Override
-            public void onDataNotAvailable(String message) {
-                Log.d(TAG, "onDataNotAvailable: " + message);
-            }
-        });
     }
 }
