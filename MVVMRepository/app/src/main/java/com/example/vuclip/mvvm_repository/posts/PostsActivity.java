@@ -3,6 +3,9 @@ package com.example.vuclip.mvvm_repository.posts;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.example.data.Initializer;
 import com.example.data.repository.PostRepository;
@@ -13,6 +16,7 @@ public class PostsActivity extends AppCompatActivity {
 
     private static final String TAG = "PostsActivity";
     private PostRepository mPostRepository;
+    private PostViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +26,27 @@ public class PostsActivity extends AppCompatActivity {
         Initializer repositoryInitializer = new Initializer();
         mPostRepository = repositoryInitializer.getPostRepository(this);
 
-        PostViewModel viewModel = new PostViewModel(mPostRepository);
-        postsModel.setPostViewModel(viewModel);
+        mViewModel = new PostViewModel(mPostRepository);
+        postsModel.setPostViewModel(mViewModel);
 
-        viewModel.start();
+        mViewModel.start();
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.options_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.refresh_posts:
+                mPostRepository.refreshPosts();
+                mViewModel.start();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
