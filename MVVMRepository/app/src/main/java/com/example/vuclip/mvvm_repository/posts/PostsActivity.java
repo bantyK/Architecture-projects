@@ -3,6 +3,7 @@ package com.example.vuclip.mvvm_repository.posts;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,11 +18,12 @@ public class PostsActivity extends AppCompatActivity {
     private static final String TAG = "PostsActivity";
     private PostRepository mPostRepository;
     private PostViewModel mViewModel;
+    private PostsModel postsModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        PostsModel postsModel = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        postsModel = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         Initializer repositoryInitializer = new Initializer();
         mPostRepository = repositoryInitializer.getPostRepository(this);
@@ -29,7 +31,15 @@ public class PostsActivity extends AppCompatActivity {
         mViewModel = new PostViewModel(mPostRepository);
         postsModel.setPostViewModel(mViewModel);
 
+        setupRecyclerView();
+
         mViewModel.start();
+    }
+
+    private void setupRecyclerView() {
+        PostsRecyclerAdapter adapter = new PostsRecyclerAdapter();
+        postsModel.posts.setLayoutManager(new LinearLayoutManager(this));
+        postsModel.posts.setAdapter(adapter);
     }
 
     @Override
