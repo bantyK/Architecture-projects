@@ -7,13 +7,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.data.Initializer;
+import com.example.data.Post;
 import com.example.data.repository.PostRepository;
 import com.example.vuclip.mvvm_repository.R;
 import com.example.vuclip.mvvm_repository.databinding.PostsModel;
 
-public class PostsActivity extends AppCompatActivity {
+public class PostsActivity extends AppCompatActivity implements PostInteractor {
 
     private static final String TAG = "PostsActivity";
     private PostRepository mPostRepository;
@@ -37,7 +39,7 @@ public class PostsActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView() {
-        PostsRecyclerAdapter adapter = new PostsRecyclerAdapter();
+        PostsRecyclerAdapter adapter = new PostsRecyclerAdapter(this);
         postsModel.posts.setLayoutManager(new LinearLayoutManager(this));
         postsModel.posts.setAdapter(adapter);
     }
@@ -58,5 +60,10 @@ public class PostsActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void showPostDetails(Post post) {
+        Toast.makeText(this, "post clicked : " + post.getTitle(), Toast.LENGTH_SHORT).show();
     }
 }

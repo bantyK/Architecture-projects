@@ -19,8 +19,10 @@ import java.util.List;
 public class PostsRecyclerAdapter extends RecyclerView.Adapter<PostsViewHolder> {
 
     private List<Post> mPosts;
+    private PostInteractor mPostInteractor;
 
-    public PostsRecyclerAdapter() {
+    public PostsRecyclerAdapter(PostInteractor postInteractor) {
+        mPostInteractor = postInteractor;
         mPosts = new ArrayList<>();
     }
 
@@ -36,12 +38,13 @@ public class PostsRecyclerAdapter extends RecyclerView.Adapter<PostsViewHolder> 
                 R.layout.post_item, parent, false);
         return new PostsViewHolder(itemBinding);
 
-
     }
 
     @Override
     public void onBindViewHolder(@NonNull PostsViewHolder holder, int position) {
-        holder.bind(mPosts.get(position));
+        final PostItemViewModel postItemViewModel = new PostItemViewModel(mPostInteractor);
+        postItemViewModel.setPost(mPosts.get(position));
+        holder.bind(postItemViewModel);
     }
 
     @Override
