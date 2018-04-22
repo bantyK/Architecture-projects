@@ -1,6 +1,7 @@
 package com.example.data.repository;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.example.data.Post;
 import com.example.data.repository.local.LocalPostRepository;
@@ -17,6 +18,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Created by Banty on 15/04/18.
  */
 public class PostRepository implements PostDataSource {
+
+    private static final String TAG = "PostRepository";
 
     private static PostRepository INSTANCE = null;
 
@@ -46,7 +49,8 @@ public class PostRepository implements PostDataSource {
         checkNotNull(callback);
 
         if (cachedPosts != null && !isCacheDirty) {
-            callback.onPostsLoaded(new ArrayList<Post>(cachedPosts.values()));
+            Log.i(TAG, "getPosts: post found in local cache");
+            callback.onPostsLoaded(new ArrayList<>(cachedPosts.values()));
             return;
         } else {
             if (isCacheDirty) {
@@ -55,6 +59,7 @@ public class PostRepository implements PostDataSource {
                 mLocalPostRepository.getPosts(new LoadPostCallback() {
                     @Override
                     public void onPostsLoaded(List<Post> posts) {
+                        Log.i(TAG, "getPosts: post found in local storage");
                         refreshCache(posts);
                         callback.onPostsLoaded(posts);
                     }
@@ -72,6 +77,7 @@ public class PostRepository implements PostDataSource {
         mRemotePostRepository.getPosts(new LoadPostCallback() {
             @Override
             public void onPostsLoaded(List<Post> posts) {
+                Log.i(TAG, "post found in remote server");
                 refreshCache(posts);
                 refreshLocalDataStorage(posts);
                 callback.onPostsLoaded(posts);
@@ -79,6 +85,7 @@ public class PostRepository implements PostDataSource {
 
             @Override
             public void onDataNotAvailable(String message) {
+                Log.i(TAG, "post not found");
                 callback.onDataNotAvailable(message);
             }
         });
@@ -113,6 +120,7 @@ public class PostRepository implements PostDataSource {
         Post cachedPost = getPostFromCache(postId);
 
         if (cachedPost != null) {
+            Log.i(TAG, "post found in cache");
             callback.onPostLoaded(cachedPost);
             return;
         }
@@ -120,6 +128,7 @@ public class PostRepository implements PostDataSource {
         mLocalPostRepository.getPost(postId, new GetPostCallback() {
             @Override
             public void onPostLoaded(Post post) {
+                Log.i(TAG, "post found in local storage");
                 refreshPostInCache(post);
                 callback.onPostLoaded(post);
             }
@@ -129,6 +138,7 @@ public class PostRepository implements PostDataSource {
                 mRemotePostRepository.getPost(postId, new GetPostCallback() {
                     @Override
                     public void onPostLoaded(Post post) {
+                        Log.i(TAG, "post found in remote server");
                         refreshPostInCache(post);
                         refreshPostInLocalStorage(post);
                         callback.onPostLoaded(post);
@@ -136,6 +146,7 @@ public class PostRepository implements PostDataSource {
 
                     @Override
                     public void onDataNotAvailable(String message) {
+                        Log.i(TAG, "post not found");
                         callback.onDataNotAvailable(message);
                     }
                 });
