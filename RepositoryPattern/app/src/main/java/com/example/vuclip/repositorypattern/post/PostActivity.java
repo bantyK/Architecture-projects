@@ -33,16 +33,19 @@ public class PostActivity extends AppCompatActivity {
                 .build()
                 .inject(this);
 
-        PostFragment postFragment =
-                (PostFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
+        PostMvvmFragment fragment =
+                (PostMvvmFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
 
-        if (postFragment == null) {
-            postFragment = PostFragment.newInstance();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.contentFrame, postFragment)
+        if (fragment == null) {
+            fragment = PostMvvmFragment.newInstance();
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.contentFrame, fragment)
                     .commit();
         }
 
-        mPostPresenter = new PostPresenter(mPostRepository, postFragment);
+
+
     }
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data class="PostDetailsBinding">
+
+        <variable
+            name="postDetailViewModel"
+            type="com.example.vuclip.mvvm_repository.postdetails.PostDetailsViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--Post title-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@{postDetailViewModel.postTitle}"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!--Post description-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@{postDetailViewModel.postBody}"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+</layout>

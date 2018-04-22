@@ -50,7 +50,6 @@ public class PostFragment extends Fragment implements PostContract.View {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         postRecyclerView = view.findViewById(R.id.post_recycler_view);
-
     }
 
     @Override
