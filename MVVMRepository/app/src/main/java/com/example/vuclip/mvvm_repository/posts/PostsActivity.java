@@ -14,14 +14,21 @@ import com.example.data.Initializer;
 import com.example.data.Post;
 import com.example.data.repository.PostRepository;
 import com.example.vuclip.mvvm_repository.R;
+import com.example.vuclip.mvvm_repository.dagger.DaggerMainComponent;
+import com.example.vuclip.mvvm_repository.dagger.MainModule;
 import com.example.vuclip.mvvm_repository.databinding.PostsModel;
 import com.example.vuclip.mvvm_repository.postdetails.PostDetailActivity;
 import com.example.vuclip.mvvm_repository.postdetails.PostDetailsFragment;
 
+import javax.inject.Inject;
+
 public class PostsActivity extends AppCompatActivity implements PostInteractor {
 
     private static final String TAG = "PostsActivity";
-    private PostRepository mPostRepository;
+
+    @Inject
+    public PostRepository mPostRepository;
+
     private PostViewModel mViewModel;
     private PostsModel postsModel;
 
@@ -30,8 +37,10 @@ public class PostsActivity extends AppCompatActivity implements PostInteractor {
         super.onCreate(savedInstanceState);
         postsModel = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        Initializer repositoryInitializer = new Initializer();
-        mPostRepository = repositoryInitializer.getPostRepository(this);
+        DaggerMainComponent.builder()
+                .mainModule(new MainModule(this))
+                .build()
+                .inject(this);
 
         mViewModel = new PostViewModel(mPostRepository);
         postsModel.setPostViewModel(mViewModel);
