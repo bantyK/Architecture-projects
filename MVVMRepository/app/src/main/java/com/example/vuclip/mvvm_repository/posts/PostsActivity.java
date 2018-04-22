@@ -1,5 +1,6 @@
 package com.example.vuclip.mvvm_repository.posts;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,8 @@ import com.example.data.Post;
 import com.example.data.repository.PostRepository;
 import com.example.vuclip.mvvm_repository.R;
 import com.example.vuclip.mvvm_repository.databinding.PostsModel;
+import com.example.vuclip.mvvm_repository.postdetails.PostDetailActivity;
+import com.example.vuclip.mvvm_repository.postdetails.PostDetailsFragment;
 
 public class PostsActivity extends AppCompatActivity implements PostInteractor {
 
@@ -65,5 +68,9 @@ public class PostsActivity extends AppCompatActivity implements PostInteractor {
     @Override
     public void showPostDetails(Post post) {
         Toast.makeText(this, "post clicked : " + post.getTitle(), Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(this, PostDetailActivity.class);
+        intent.putExtra(PostDetailsFragment.ARG_POST_ID, post.getId());
+        startActivity(intent);
     }
 }
