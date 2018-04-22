@@ -32,6 +32,7 @@ public class PostViewModel extends BaseObservable {
 
     private void getPosts() {
         showProgressBar.set(true);
+
         mPostRepository.getPosts(new PostDataSource.LoadPostCallback() {
             @Override
             public void onPostsLoaded(List<Post> posts) {

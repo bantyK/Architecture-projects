@@ -1,10 +1,8 @@
 package com.example.vuclip.mvvm_repository.postdetails;
 
-import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
 
-import com.example.data.Initializer;
 import com.example.data.Post;
 import com.example.data.repository.PostDataSource;
 import com.example.data.repository.PostRepository;
@@ -16,22 +14,20 @@ public class PostDetailsViewModel extends BaseObservable {
 
     private final String postId;
 
-    private final Context mContext;
 
     public ObservableField<String> postTitle = new ObservableField<>();
 
     public ObservableField<String> postBody = new ObservableField<>();
 
-    public PostDetailsViewModel(String postId, Context context) {
+    private final PostRepository mPostRepository;
+
+    public PostDetailsViewModel(String postId, PostRepository postRepository) {
         this.postId = postId;
-        mContext = context;
+        mPostRepository = postRepository;
     }
 
     public void getPost() {
-        Initializer initializer = new Initializer();
-        PostRepository postRepository = initializer.getPostRepository(mContext);
-
-        postRepository.getPost(postId, new PostDataSource.GetPostCallback() {
+        mPostRepository.getPost(postId, new PostDataSource.GetPostCallback() {
             @Override
             public void onPostLoaded(Post post) {
                 postTitle.set(post.getTitle());

@@ -10,8 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.data.repository.PostRepository;
 import com.example.vuclip.mvvm_repository.R;
+import com.example.vuclip.mvvm_repository.dagger.DaggerMainComponent;
+import com.example.vuclip.mvvm_repository.dagger.MainModule;
 import com.example.vuclip.mvvm_repository.databinding.PostDetailsBinding;
+
+import javax.inject.Inject;
 
 /**
  * Created by Banty on 22/04/18.
@@ -19,6 +24,9 @@ import com.example.vuclip.mvvm_repository.databinding.PostDetailsBinding;
 public class PostDetailsFragment extends Fragment {
     public static final String ARG_POST_ID = "PostDetailsFragment.POSTID";
     private PostDetailsBinding mBinding;
+
+    @Inject
+    PostRepository mPostRepository;
 
     public PostDetailsFragment() {
 
@@ -44,13 +52,16 @@ public class PostDetailsFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        String postId = getPostId(savedInstanceState);
+        DaggerMainComponent.builder()
+                .mainModule(new MainModule(getContext()))
+                .build().inject(this);
 
+        String postId = getPostId(savedInstanceState);
         setUpViewModel(postId);
     }
 
     private void setUpViewModel(String postId) {
-        PostDetailsViewModel viewModel = new PostDetailsViewModel(postId, getContext());
+        PostDetailsViewModel viewModel = new PostDetailsViewModel(postId, mPostRepository);
         mBinding.setPostDetailViewModel(viewModel);
         viewModel.getPost();
     }
