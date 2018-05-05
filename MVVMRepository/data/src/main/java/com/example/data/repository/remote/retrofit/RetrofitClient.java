@@ -13,7 +13,7 @@ public class RetrofitClient {
     private static Retrofit INSTANCE = null;
 
     public static ApiInterface getRetrofitClient() {
-        if (INSTANCE == null) {
+            if (INSTANCE == null) {
             INSTANCE = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

@@ -36,5 +36,4 @@ public interface PostDataSource {
     void deletePost(@NonNull String postId);
 
     void deleteAllPosts();
-
 }
