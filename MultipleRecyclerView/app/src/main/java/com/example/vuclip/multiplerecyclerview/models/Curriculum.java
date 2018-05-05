@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by Banty on 05/05/18.
+ * Model POJO class
  */
 public class Curriculum {
     private String year;
