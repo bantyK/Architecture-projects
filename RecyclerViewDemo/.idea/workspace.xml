@@ -70,7 +70,7 @@
       <file leaf-file-name="MainRecyclerAdapter.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/vuclip/recyclerviewdemo2/adapters/MainRecyclerAdapter.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="988">
               <caret line="52" column="22" lean-forward="false" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
               <folding>
                 <element signature="e#55#502#0" expanded="true" />
@@ -2412,7 +2412,7 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="device.picker.selection" value="Pixel_2_XL_API_23" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1526829564002" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1526829566192" />
     <property name="SearchEverywhereHistoryKey" value="ori&#9;FILE&#9;file:///Users/Vuclip/Desktop/Program/RecyclerViewDemo/app/src/main/res/layout/horizontal_row.xml" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/java/com/example/vuclip/recyclerviewdemo2/adapters" />
   </component>
@@ -3269,7 +3269,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/vuclip/recyclerviewdemo2/adapters/MainRecyclerAdapter.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="988">
           <caret line="52" column="22" lean-forward="false" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
           <folding>
             <element signature="e#55#502#0" expanded="true" />
