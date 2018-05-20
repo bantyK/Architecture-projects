@@ -17,6 +17,9 @@ import com.example.vuclip.multiplerecyclerview.models.Curriculum
 class MainVerticalRecyclerAdapter(private val mCurriculumList: List<Curriculum>) : RecyclerView.Adapter<MainVerticalRecyclerAdapter.ViewHolder>() {
     private var mContext: Context? = null
 
+    private val LAYOUT_LARGE = 1
+    private val LAYOUT_SMALL = 2
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         mContext = parent.context
         val itemView = LayoutInflater.from(mContext).inflate(R.layout.vertical_list_item, parent, false)
@@ -24,7 +27,10 @@ class MainVerticalRecyclerAdapter(private val mCurriculumList: List<Curriculum>)
     }
 
     override fun getItemViewType(position: Int): Int {
-        return position % 2
+        return if (mCurriculumList.get(position).layout.equals("large", false))
+            LAYOUT_LARGE
+        else
+            LAYOUT_SMALL
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

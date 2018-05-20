@@ -19,9 +19,6 @@ class ShortBannerAdapter(private val mSubjectList: List<String>) : RecyclerView.
         mRowIndex = index
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return position % 2;
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val context = parent.context
@@ -36,7 +33,7 @@ class ShortBannerAdapter(private val mSubjectList: List<String>) : RecyclerView.
 
         itemViewHolder.mTextView.setOnClickListener {
             Toast.makeText(holder.mTextView.context,
-                    "Position : ${mRowIndex},${position}",
+                    "Position : $mRowIndex,$position",
                     Toast.LENGTH_LONG).show()
         }
     }
@@ -47,11 +44,8 @@ class ShortBannerAdapter(private val mSubjectList: List<String>) : RecyclerView.
 
     internal inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var mTextView: TextView
+        var mTextView: TextView = itemView.findViewById(R.id.horizontal_item_text)
 
-        init {
-            mTextView = itemView.findViewById(R.id.horizontal_item_text)
-        }
     }
 
 }

@@ -19,9 +19,6 @@ class FullBannerAdapter(private val mSubjectList: List<String>) : RecyclerView.A
         mRowIndex = index
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return position % 2;
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val context = parent.context
