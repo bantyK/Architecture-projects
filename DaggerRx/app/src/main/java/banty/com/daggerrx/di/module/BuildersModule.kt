@@ -1,6 +1,6 @@
 package banty.com.daggerrx.di.module
 
-import banty.com.daggerrx.CryptocurrenciesActivity
+import banty.com.daggerrx.ui.CryptocurrenciesActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
