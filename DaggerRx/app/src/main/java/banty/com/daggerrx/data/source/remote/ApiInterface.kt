@@ -1,6 +1,6 @@
-package banty.com.daggerrx.api
+package banty.com.daggerrx.data.source.remote
 
-import banty.com.daggerrx.models.Cryptocurrency
+import banty.com.daggerrx.data.Cryptocurrency
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query

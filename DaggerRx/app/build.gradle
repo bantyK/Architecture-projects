@@ -44,6 +44,7 @@ dependencies {
 
     //Room
     implementation "android.arch.persistence.room:runtime:${rootProject.ext.archVersion}"
+    implementation "android.arch.persistence.room:rxjava2:${rootProject.ext.archVersion}"
     kapt "android.arch.persistence.room:compiler:${rootProject.ext.archVersion}"
 
     //Lifecycle

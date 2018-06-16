@@ -2,8 +2,8 @@ package banty.com.daggerrx.di.module
 
 import android.arch.persistence.room.Room
 import banty.com.daggerrx.CryptoApp
-import banty.com.daggerrx.dao.CryptocurrencyDao
-import banty.com.daggerrx.dao.Database
+import banty.com.daggerrx.data.source.local.CryptocurrencyDao
+import banty.com.daggerrx.data.source.local.Database
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
