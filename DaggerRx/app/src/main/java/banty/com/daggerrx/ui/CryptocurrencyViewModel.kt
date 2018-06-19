@@ -18,6 +18,7 @@ class CryptocurrencyViewModel @Inject constructor(private val cryptocurrencyRepo
 
     val cryptocurrenciesResult: MutableLiveData<List<Cryptocurrency>> = MutableLiveData()
     val cryptocurrenciesError: MutableLiveData<String> = MutableLiveData()
+    var cryptocurrenciesLoader: MutableLiveData<Boolean> = MutableLiveData()
 
     lateinit var disposableObserver: DisposableObserver<List<Cryptocurrency>>
 
@@ -29,7 +30,11 @@ class CryptocurrencyViewModel @Inject constructor(private val cryptocurrencyRepo
         return cryptocurrenciesError
     }
 
-    fun loadCryptocurrencies() {
+    fun cryptocurrenciesLoader(): LiveData<Boolean> {
+        return cryptocurrenciesLoader
+    }
+
+    fun loadCryptocurrencies(limit: Int, offset: Int) {
         disposableObserver = object : DisposableObserver<List<Cryptocurrency>>() {
             override fun onComplete() {
 
@@ -37,15 +42,17 @@ class CryptocurrencyViewModel @Inject constructor(private val cryptocurrencyRepo
 
             override fun onNext(cryptocurrencies: List<Cryptocurrency>) {
                 cryptocurrenciesResult.postValue(cryptocurrencies)
+                cryptocurrenciesLoader.postValue(false)
             }
 
             override fun onError(e: Throwable) {
                 cryptocurrenciesError.postValue(e.message)
+                cryptocurrenciesLoader.postValue(false)
             }
 
         }
 
-        cryptocurrencyRepository.getCryptocurrencies()
+        cryptocurrencyRepository.getCryptocurrencies(limit, offset)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .debounce(400, TimeUnit.MILLISECONDS)

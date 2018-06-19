@@ -16,9 +16,9 @@ class CryptocurrencyRepository @Inject constructor(val apiInterface: ApiInterfac
 
     val TAG = "Repository"
 
-    fun getCryptocurrencies(): Observable<List<Cryptocurrency>> {
+    fun getCryptocurrencies(limit: Int, offset: Int): Observable<List<Cryptocurrency>> {
         val apiObservable = getObservableFromApi()
-        val dbObservable = getObservableFromDb()
+        val dbObservable = getObservableFromDb(limit, offset)
         return Observable.concatArrayEager(apiObservable, dbObservable)
     }
 
@@ -32,8 +32,8 @@ class CryptocurrencyRepository @Inject constructor(val apiInterface: ApiInterfac
                 }
     }
 
-    private fun getObservableFromDb(): ObservableSource<out List<Cryptocurrency>>? {
-        return cryptocurrencyDao.queryCryptocrrencies()
+    private fun getObservableFromDb(limit: Int, offset: Int): ObservableSource<out List<Cryptocurrency>>? {
+        return cryptocurrencyDao.queryCryptocrrencies(limit, offset)
                 .toObservable()
                 .doOnNext {
                     Log.e(TAG, it.size.toString())

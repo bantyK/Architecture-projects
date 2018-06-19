@@ -10,8 +10,8 @@ import io.reactivex.Single
 @Dao
 interface CryptocurrencyDao {
 
-    @Query("Select * from cryptocurrencies")
-    fun queryCryptocrrencies(): Single<List<Cryptocurrency>>
+    @Query("Select * from cryptocurrencies order by rank limit :limit offset :offset")
+    fun queryCryptocrrencies(limit: Int, offset: Int): Single<List<Cryptocurrency>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCryptoCurrency(cryptocurrency: Cryptocurrency)
