@@ -21,81 +21,101 @@
             android:text="@string/btn_demo_schedulers" />
 
         <Button
+            android:id="@+id/btn_login_demo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_demo"
+            />
+
+        <Button
             android:id="@+id/btn_demo_buffer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_demo_buffer" />
+            android:text="@string/btn_demo_buffer"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btn_demo_debounce"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_demo_debounce" />
+            android:text="@string/btn_demo_debounce"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btn_demo_retrofit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_demo_retrofit" />
+            android:text="@string/btn_demo_retrofit"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btn_demo_double_binding_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_demo_double_binding_textview" />
+            android:text="@string/btn_demo_double_binding_textview"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btn_demo_polling"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_demo_polling" />
+            android:text="@string/btn_demo_polling"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btn_demo_rxbus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_demo_rxbus" />
+            android:text="@string/btn_demo_rxbus"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btn_demo_form_validation_combinel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_demo_form_validation_combinel" />
+            android:text="@string/btn_demo_form_validation_combinel"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btn_demo_pseudo_cache"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_demo_pseudocache" />
+            android:text="@string/btn_demo_pseudocache"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btn_demo_timing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_demo_timing" />
+            android:text="@string/btn_demo_timing"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btn_demo_exponential_backoff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_demo_exponential_backoff" />
+            android:text="@string/btn_demo_exponential_backoff"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btn_demo_rotation_persist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_demo_rotation_persist" />
+            android:text="@string/btn_demo_rotation_persist"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btn_demo_volley"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_demo_volley" />
+            android:text="@string/btn_demo_volley"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btn_demo_pagination"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_demo_pagination" />
+            android:text="@string/btn_demo_pagination"
+            android:visibility="gone" />
     </LinearLayout>
 </ScrollView>

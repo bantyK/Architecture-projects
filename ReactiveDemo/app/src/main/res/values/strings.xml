@@ -45,5 +45,9 @@
     <string name="msg_pseudoCache_demoInfo_mergeSlowDisk">Here\'s a fake example where the disk is made slower than the network call. You can see the results are whack.</string>
     <string name="msg_pseudoCache_demoInfo_mergeOptimized">This is an optimized merge and probably want to use. Notice subscriptions happen immediately and network results are respected regardless of when they come in. So if the disk is slower, it is discarded.</string>
     <string name="msg_pseudoCache_demoInfo_mergeOptimizedSlowDisk">Similar to optimized merge (same code). Notice though that if the disk is slower it\'s discarded in favor of the "fresh" network data which in this case happens to be faster.</string>
+    <string name="login_demo">Login Demo</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="login">Login</string>
 
 </resources>
